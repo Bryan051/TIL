@@ -2,6 +2,7 @@
 
 - Iterator의 장점
   - 컬렉션에서 요소를 제어하는 기능
+  - Iterator \<T> iterator = Collection.iterator();
   - next() 및 previous()를 써서 앞뒤로 이동하는 기능
   - hasNext()를 써서 더 많은 요소가 있는지 확인하는 기능
   - List와 Set 인터페이스에서 iterator() 메소드를 사용
