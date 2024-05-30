@@ -4,6 +4,7 @@
   - 컬렉션에서 요소를 제어하는 기능
   - next() 및 previous()를 써서 앞뒤로 이동하는 기능
   - hasNext()를 써서 더 많은 요소가 있는지 확인하는 기능
+  - List와 Set 인터페이스에서 iterator() 메소드를 사용
     - Set의 경우 인덱스가 없기 때문에 일반 for문을 사용할 수 없지만, for-each문은 사용할 수 있다.</br>
       그러나 for-each문으로 자료구조를 돌다가 값을 수정, 삭제해야 해서 수정, 삭제를 수행하는 코드를 넣으면 ConcurrentModificationException이 발생한다.
 
