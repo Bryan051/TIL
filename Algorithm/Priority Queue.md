@@ -54,6 +54,9 @@ PriorityQueue 생성시에 매개변수로 람다식을 작성하여 우선순�
 PriorityQueue<MyMember> memberQueue = new PriorityQueue<>((m1,m2)->m1.age-m2.age);
 ```
 
+## comparable 혹은 람다식, 우선순위 지정에 대한 공부 더 필요.
+유연하게 사용할 수 있도록.
+
 
 
 
