@@ -21,4 +21,6 @@ fetch 요청 헤더 오리진에 * 들어간 것을 확인
 - 다만 보안 문제가 있기에 사용안할땐 끄는게 맞다.
 - 토큰 문제일 수 도 있어 익스텐션 끄고 토큰 재발급을 받아봐야겠다.
 
+정보 출처
+https://inpa.tistory.com/entry/WEB-%F0%9F%93%9A-CORS-%F0%9F%92%AF-%EC%A0%95%EB%A6%AC-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95-%F0%9F%91%8F#%EC%9A%94%EC%B2%AD_%EB%B0%A9%EC%8B%9D%EC%97%90_%EB%94%B0%EB%9D%BC_%EB%8B%A4%EB%A5%B8_cors_%EB%B0%9C%EC%83%9D_%EC%97%AC%EB%B6%80
 
