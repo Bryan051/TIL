@@ -48,6 +48,9 @@ memberQueue.offer(new MyMember("memC",30));
 
 우선순위는 memB(age=10) >  memA(age=20) >  memC(age=30) 이 된다.
 
+- interface Comparable : int compareTo(T o1, T o2) - (양수 : 자리 바꿈, 음수 : 자리 유지, 0 : 동일 위치)
+- interface Comparator : int compare(T o1, T o2) - (양수 : 자리 바꿈, 음수 : 자리 유지, 0 : 동일 위치)
+
 3. 람다식 이용
 PriorityQueue 생성시에 매개변수로 람다식을 작성하여 우선순위를 지정해 줄 수있다.
 ```java
