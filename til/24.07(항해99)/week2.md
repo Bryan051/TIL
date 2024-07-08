@@ -25,6 +25,23 @@
   하지만 지금 받아왔을때 서버에서 그 시점 이전부터 전부 광고를 본것으로 간주하고 카운트해 중복으로 데이터가 쌓인다.</br>
   들어오는 모든 값을 처음부터 다시 재생을 한다는 가정을 한다면 last_played 무의미할것.</br>
   서비스단에서 본 시간만 넘어온다고 가정하고 더해서 넣어주거나 기존의 시점으로 생각 한 뒤 전 last_played 를 빼줘도 되지만.. 수정하며 꼬일 부분이 있다. 고민된다.
+  ```java
+  @Transactional
+    public void createAdViewsIfNecessary(VideoRequestDto videoRequestDto, Video video) {
+        List<VideoAd> videoAds = videoAdRepository.findVideoAdByVideo(video);
+
+        for (VideoAd videoAd : videoAds) {
+            if (videoAd.getAdPosition() < videoRequestDto.getLast_played()) {
+                AdView adView = new AdView();
+                adView.setCreatedAt(LocalDate.now());
+                adView.setVideoAd(videoAd);
+                adViewRepository.save(adView);
+            }
+        }
+    }
+  ```
+  request에 담긴 last_played 시간보다 이전에 AdPosition이 있는 동영상 내 광고(매핑테이블)를 가져와 adview 를 만들어주는 메소드이다.
+  videoview 에서 해당 video의 가장 최신의 값보다 한단계(-1안됨. 그 사이 다른 video 에 대한 videoview가 생길 수 있고, play 시에 해당 video에 대한 videoview 는 미리생성된다) 작은 객체에서 last_played 값을 가져와 사이에 광고가 위치 해 있으면 생성.
   
 - userId를 param 으로 가져오지 않고 jwt 토큰 값으로 가져 올 건데 requestDto나 postman에서 id 값을 직접 넣어주고있었다. 수정.
     
