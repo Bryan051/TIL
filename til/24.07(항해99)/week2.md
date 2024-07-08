@@ -43,6 +43,30 @@
   request에 담긴 last_played 시간보다 이전에 AdPosition이 있는 동영상 내 광고(매핑테이블)를 가져와 adview 를 만들어주는 메소드이다.
   videoview 에서 해당 video의 가장 최신의 값보다 한단계(-1안됨. 그 사이 다른 video 에 대한 videoview가 생길 수 있고, play 시에 해당 video에 대한 videoview 는 미리생성된다) 작은 객체에서 last_played 값을 가져와 사이에 광고가 위치 해 있으면 생성.
 
+```java
+ @Transactional
+    public void createAdViewsIfNecessary(VideoRequestDto videoRequestDto, Video video,User user) {
+
+        // 가장 최신의 두 VideoView를 가져옴
+        List<VideoView> videoViews = videoViewRepository.findTop2ByUserIdAndVidIdOrderByIdDesc(user, video);
+
+        // 이전의 last_played 값을 설정. 2개이상일수밖에없음.
+        int previousLastPlayed = videoViews.size() > 1 ? videoViews.get(1).getLast_played() : 0;
+
+        // 모든 VideoAd를 가져옴
+        List<VideoAd> videoAds = videoAdRepository.findVideoAdByVideo(video);
+        for (VideoAd videoAd : videoAds) {
+            // VideoAd의 AdPosition이 previousLastPlayed와 last_played 사이에 있는지 확인
+            if (videoAd.getAdPosition() > previousLastPlayed && videoAd.getAdPosition() <= videoRequestDto.getLast_played()) {
+                AdView adView = new AdView();
+                adView.setCreatedAt(LocalDate.now());
+                adView.setVideoAd(videoAd);
+                adViewRepository.save(adView);
+            }
+        }
+    }
+```
+
   - 1550으로 테스트, 이전 광고인 33번 이후 34번만 들어간다.
     ![image](https://github.com/Bryan051/TIL/assets/68111122/636de210-1e5e-4d38-8d98-a44cc2779641)
     ![image](https://github.com/Bryan051/TIL/assets/68111122/6a590770-96a8-4201-ac7d-af50f540a17a)
