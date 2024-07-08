@@ -76,7 +76,16 @@
 
 
 - userId를 param 으로 가져오지 않고 jwt 토큰 값으로 가져 올 건데 requestDto나 postman에서 id 값을 직접 넣어주고있었다. 수정.
-- pause 시 lastplayed 0 을 넣으면 새로운값이 안들어가고 갱신되는문제. 일단보류.
+- 통계 시 동영상히스토리 테이블에 duration을 구해주지 않으면 매번 값을 따로 계산해서 넣어야한다.
+  ```java
+    int previousLastPlayed = videoViews.size() > 1 ? videoViews.get(1).getLast_played() : 0;
+            int duration = 0;
+            if (videoRequestDto.getLast_played() < previousLastPlayed){
+                duration = video.getVidLength() - previousLastPlayed + videoRequestDto.getLast_played();
+            }else{
+                duration = videoRequestDto.getLast_played() - previousLastPlayed;
+            }
+  ```
 
 
 
