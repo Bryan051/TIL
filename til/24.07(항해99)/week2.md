@@ -42,7 +42,15 @@
   ```
   request에 담긴 last_played 시간보다 이전에 AdPosition이 있는 동영상 내 광고(매핑테이블)를 가져와 adview 를 만들어주는 메소드이다.
   videoview 에서 해당 video의 가장 최신의 값보다 한단계(-1안됨. 그 사이 다른 video 에 대한 videoview가 생길 수 있고, play 시에 해당 video에 대한 videoview 는 미리생성된다) 작은 객체에서 last_played 값을 가져와 사이에 광고가 위치 해 있으면 생성.
-  
+
+  - 1550으로 테스트, 이전 광고인 33번 이후 34번만 들어간다.
+    ![image](https://github.com/Bryan051/TIL/assets/68111122/636de210-1e5e-4d38-8d98-a44cc2779641)
+    ![image](https://github.com/Bryan051/TIL/assets/68111122/6a590770-96a8-4201-ac7d-af50f540a17a)
+  - 3050 으로 테스트, 이전 광고 이후 사이의 광고들로만 들어가게끔 수정이 되었다.
+  ![image](https://github.com/Bryan051/TIL/assets/68111122/b6b3d9bf-7df7-42e0-a6ad-77ec91e08a17)
+
+
+
 - userId를 param 으로 가져오지 않고 jwt 토큰 값으로 가져 올 건데 requestDto나 postman에서 id 값을 직접 넣어주고있었다. 수정.
     
 
