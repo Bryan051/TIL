@@ -86,12 +86,15 @@
                 duration = videoRequestDto.getLast_played() - previousLastPlayed;
             }
   ```
-## 정산 로직 구현
+## 비디오 통계, 정산 로직 구현
 - vidId 6 에 누적조회수 99998 세팅, videoView에 9일 기준 조회수 4 있음. ( 1 * 2 ) + ( 1.1 * 2 ) = 4.2; 추후 절사.
  ![image](https://github.com/Bryan051/TIL/assets/68111122/2488f4d5-33f3-4b9b-bbcc-cc3082f9b2ad)
 ![image](https://github.com/Bryan051/TIL/assets/68111122/9676e010-3084-420b-bfa3-0fb0af6a3bef)
 - 결과가 4.300000 부동소수때문인듯
   ![image](https://github.com/Bryan051/TIL/assets/68111122/8d82a3f3-c302-4db3-a784-25968e4e2b33)
+## 광고 통계, 정산 로직 구현
+- 광고통계, adId 6번이 붙어있는 video_ad를 찾아 (30,34,37번) ad_view 의 갯수 카운트.
+  ![image](https://github.com/Bryan051/TIL/assets/68111122/c011a439-0d03-415d-88c9-d301284c363f)
 
 
 
