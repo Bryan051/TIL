@@ -116,7 +116,10 @@ String cacheKey = user.getUserId() + "_" + video.getVidId();
             VideoView latestVideoView = videoViewCache.get(cacheKey);
 ---
 videoViewWriteRepository.save(newVideoView);
+// 캐시에 새로운 VideoView 객체를 추가 (덮어쓰기)
 videoViewCache.put(cacheKey, newVideoView);
 ```
-- 캐싱 이후 db에 직접 조회를 하지 않아 눈에띄게 속도가 빨라졌지만 데이터가 쌓이면 점점 느려지는 것은 변함이 없다.
-- 쌓인 데이터를 소모시켜준다. (videoview 는 가장 최근에 시청기록때문에 받아오기때문)
+- 캐싱 이후 db에 직접 조회를 하지 않아 눈에띄게 속도가 빨라졌다.
+- 캐시에 cacheKey에 해당하는 새로운 VideoView 객체를 추가 (덮어쓰기)하기 때문에 용량도 크게 늘어나지 않는다
+    - cacheKey 값이 userId,VideoId 값인데 현재 프로젝트에서 5 * 5 = 25의 조합이 끝.
+    - 추후 CACHE_SIZE_LIMIT를 사용하여 캐시의 크기를 제한할 수 있다. Cache.size() > Limit -> remove(oldestKey)
