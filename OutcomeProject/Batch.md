@@ -5,7 +5,7 @@
 
 - 문득 든 생각이 paging 으로 많은 데이터를 끊어서 가져오는게 reader 의 의의라면, videoview 를 대상으로 읽는게 나은 방법이 아닐까? 하는 의문에 대한 고찰.
 
-1. 페이징 처리를 해서 넘겨오면 비디오 a 에 해당하는 videoview가 전부 다 넘어오는지
+1. join fetch 를 해도 페이징 처리를 해서 넘겨오게 되면 비디오 v 에 해당하는 videoview가 전부 다 넘어오는지
 2. 다 넘어온다 해도 페이지 사이즈에 따라 혹은 chunk 사이즈에 따라 videoview 가 많을 때 누락이 돼 통계에 영향을 주진 않을지
 3. count, sum 메서드가 VideoViewReadRepository에서 들고오는데 reader에서의 역할이 겹치는게 맞는지
 4. 겹친다면 이 방식이 구조의 의의에 맞는 것인지
