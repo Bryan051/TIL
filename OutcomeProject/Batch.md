@@ -1,7 +1,7 @@
 ## 배치 구조 Refactoring
 
 - reader(paging), processor, writer(chunk) 구조에서</br>
-기존의 코드는 video 를 읽어오고 processor 에서 videoview 를 조회해 count 하는 방식이었다.
+현재 코드는 video 를 읽어오고 processor 에서 videoview 를 조회해 count 하는 방식이다.
 
 - 문득 든 생각이 paging 으로 많은 데이터를 끊어서 가져오는게 reader 의 의의라면, videoview 를 대상으로 읽는게 나은 방법이 아닐까? 하는 의문에 대한 고찰.
 
