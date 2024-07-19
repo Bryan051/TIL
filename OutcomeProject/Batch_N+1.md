@@ -60,7 +60,7 @@
   ```
 
 ## 결과
-- 배치(통계) 시간 : 13분 </br>
+- 배치(통계) 시간 - video_view 3천만개: 13분 </br>
   <img width="496" alt="image" src="https://github.com/user-attachments/assets/f34e8073-106b-49fa-82eb-1b9a6be9e02b">
 
 ### 페이지 사이즈
