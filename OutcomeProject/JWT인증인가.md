@@ -1,5 +1,5 @@
 ## Jwt 인증 및 인가 필터 설정
-- sing up 성공!
+- sign up 성공!
 ```
   {
     "userName" : "iri",
