@@ -48,6 +48,7 @@
   
 ## 리팩토링 2
 - 애플리케이션 레벨에서 데이터를 페이지별로 로드하고 집계하려 하면 videoview 의 갯수가 너무 많다.
+- 단일 책임 원칙을 유지한채 (reader 에서 video만) processor 에서 count 와 sum 으로 해결하려 한다.
 - COUNT와 SUM은 데이터베이스에서 집계 함수로 처리되므로, 데이터베이스가 해당 쿼리를 실행하여 단일 결과를 반환하도록 한다.
   ```java
      @Query("SELECT COUNT(v) FROM VideoView v WHERE v.userId <> :#{#video.userId} AND v.vidId = :video AND FUNCTION('DATE', v.createdAt) = :date")
