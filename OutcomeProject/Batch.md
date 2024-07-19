@@ -26,5 +26,5 @@
 - 현재 구조는 배치 처리의 단계별 책임 분리를 잘 따르고 있다고 생각. reader는 Video 엔티티를 읽어오고, processor는 통계를 계산하며, writer는 결과를 저장한다.</br>
   이는 각 단계가 단일 책임 원칙(Single Responsibility Principle)을 따르고 있기 때문에, 구조의 의의에 부합한다.
 ## 개선점
-- reader 에서 video 를 다 들고 오고 해당 video 에 대한 videoview 를 찾아오기 때문에 N+1 문제가 발생할 것으로 보인다.
-- joinfetch 로 reader로 한번에 다 들고오는 방식을 고민 해 봐야 할 듯 하다.
+- reader 에서 video 를 다 들고 오고 해당 video 에 대한 videoview 를 찾는 방식이기 때문에 N+1 문제가 발생할 것으로 보인다.
+- joinfetch 로 reader로 한번에 다 들고 올 수는 없다(paging). 더 나은 방식이 있을까?
