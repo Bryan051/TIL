@@ -19,6 +19,7 @@
    
 - 해결2:
    - 번거롭지만 더미데이터를 집어넣는 경우 지금은 수작업으로 처리하는게 훨씬 빨랐다.
+      - 아래는 Auto_Increment reset 문. 
     ```
       SET @sql = CONCAT('ALTER TABLE ad_view AUTO_INCREMENT = ', 30000001);
       PREPARE stmt FROM @sql;
