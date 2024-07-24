@@ -11,7 +11,8 @@
 
 - 해결1:
   - 트랜잭션 단위를 배치 사이즈로 조절 후 프로시저방식을 사용하면 해결이 가능하나 시간이 너무 소요된다.
-  - 조절한 트랜잭션이 일어남과 동시에 Replica DB에 복제가 일어나기 때문.
+  - 사이즈를 조절하면 트랜잭션이 빈번하게 일어나기 때문.
+     - 또한 동시에 Replica DB에 복제가 일어나는데, 이도 실행시간에 영향을 주고 중간에 문제가 생길 시 Replication 에 영향을 준다.
    <img width="1040" alt="image" src="https://github.com/user-attachments/assets/c1152009-e6f0-41ce-a20b-84329ac4f1da">
 
 
